@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/front/budget/new-budget}" th:object="${newBudgetItemForm}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nowy budzet</label>
+            <input type="text" class="form-control" th:field="*{amount}" id="exampleInputEmail1"
+                   aria-describedby="emailHelp">
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('title')}">
+                <span th:errors="*{amount}"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
